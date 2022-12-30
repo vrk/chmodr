@@ -58,10 +58,6 @@ p,
   line-height: 1.45;
 }
 
-.tmpl-post .post-byline {
-  display: none;
-}
-
 a[href] {
   color: var(--text-color-link);
 }
@@ -164,7 +160,6 @@ code {
 }
 
 .post-byline {
-  /* font-size: 0.9em; */
   margin-bottom: 2em;
 }
 
