@@ -58,6 +58,10 @@ p,
   line-height: 1.45;
 }
 
+.tmpl-post .post-byline {
+  display: none;
+}
+
 a[href] {
   color: var(--text-color-link);
 }
@@ -99,7 +103,9 @@ h1, h2, h3, h4, h5, h6 {
 
 .home .tagline {
   font-weight: 400;
+  font-style: italic;
 }
+
 .home :link:not(:hover) {
   text-decoration: none;
 }
@@ -157,7 +163,10 @@ code {
   word-break: break-all;
 }
 
-
+.post-byline {
+  /* font-size: 0.9em; */
+  margin-bottom: 2em;
+}
 
 /* Posts list */
 .postlist {
@@ -178,11 +187,13 @@ code {
   line-height: 100%;
   text-align: right;
 }
+.postlist-author,
 .postlist-date,
 .postlist-item:before {
   font-size: 0.8125em; /* 13px /16 */
   color: var(--color-gray-90);
 }
+.postlist-author,
 .postlist-date {
   word-spacing: -0.5px;
 }
@@ -266,4 +277,7 @@ a[href].direct-link:focus:visited,
 :hover > a[href].direct-link,
 :hover > a[href].direct-link:visited {
   color: #aaa;
+}
+a[href]:hover {
+  text-decoration: none;
 }

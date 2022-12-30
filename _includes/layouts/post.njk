@@ -4,19 +4,22 @@ templateClass: tmpl-post
 ---
 <h1>{{ title }}</h1>
 
-<time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> {%- if author %} • <a href="/authors/{{ author | slug }}/">{{ author }}</a> {%- endif %}
+<div class="post-byline">
 
-{%- for tag in tags | filterTagList %}
-{%- set tagUrl %}/tags/{{ tag | slugify }}/{% endset %}
-<a href="{{ tagUrl | url }}" class="post-tag">{{ tag }}</a>
-{%- endfor %}
+  <time datetime="{{ page.date | machineDate }}">{{ page.date | readableDate }}</time> 
+  {%- if author %}
+    • <a href="/authors/{{ author | slug }}/">{{ author }}</a>
+  {%- endif %}
+
+
+</div>
 
 {{ content | safe }}
 
 {%- if collections.posts %}
 {%- set nextPost = collections.posts | getNextCollectionItem(page) %}
 {%- set previousPost = collections.posts | getPreviousCollectionItem(page) %}
-{%- if nextPost or previousPost %}
+{%- if nextPost or previousPost or tags%}
 <hr>
 <ul>
   {%- if nextPost %}<li>Next: <a href="{{ nextPost.url | url }}">{{ nextPost.data.title }}</a></li>{% endif %}
