@@ -1,7 +1,8 @@
 /* Defaults */
 :root {
-  --font-family: -apple-system, system-ui, sans-serif;
-  --font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console, Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono, Nimbus Mono L, Courier New, Courier, monospace;
+  --font-family-body: -apple-system, system-ui, sans-serif;
+  --font-family-headings: 'IBM Plex Mono', monospace;
+  --font-family-monospace: 'IBM Plex Mono', monospace;
 }
 
 /* Theme colors */
@@ -40,10 +41,12 @@
 html,
 body {
   padding: 0;
-  margin: 0;
-  font-family: var(--font-family);
+  margin: 0 auto;
+  font-family: var(--font-family-body);
   color: var(--text-color);
   background-color: var(--background-color);
+  width: 90%;
+  max-width: 1100px;
 }
 
 p:last-child {
@@ -72,13 +75,55 @@ main {
 main :first-child {
   margin-top: 0;
 }
+
+/* Header */
 header {
   border-bottom: 1px dashed var(--color-gray-20);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }
-header:after {
-  content: "";
-  display: table;
-  clear: both;
+
+header,
+.postlist-link,
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-family-headings);
+}
+
+.home {
+  display: flex;
+  align-items: center;
+  font-size: 1em;
+  margin: 1em;
+}
+.home a {
+  font-size: 1.5em;
+  margin-right: 1em;
+}
+
+.home .tagline {
+  font-weight: 400;
+}
+.home :link:not(:hover) {
+  text-decoration: none;
+}
+
+/* Nav */
+.nav {
+  padding: 0;
+  list-style: none;
+  margin-left: 1em;
+}
+.nav-item {
+  display: inline-block;
+  margin-right: 1em;
+}
+.nav-item a[href]:not(:hover) {
+  text-decoration: none;
+}
+.nav-item-active {
+  font-weight: 700;
+  text-decoration: underline;
 }
 
 table {
@@ -116,35 +161,7 @@ code {
   word-break: break-all;
 }
 
-/* Header */
-.home {
-  padding: 0 1rem;
-  float: left;
-  margin: 1rem 0; /* 16px /16 */
-  font-size: 1em; /* 16px /16 */
-}
-.home :link:not(:hover) {
-  text-decoration: none;
-}
 
-/* Nav */
-.nav {
-  padding: 0;
-  list-style: none;
-  float: left;
-  margin-left: 1em;
-}
-.nav-item {
-  display: inline-block;
-  margin-right: 1em;
-}
-.nav-item a[href]:not(:hover) {
-  text-decoration: none;
-}
-.nav-item-active {
-  font-weight: 700;
-  text-decoration: underline;
-}
 
 /* Posts list */
 .postlist {

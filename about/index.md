@@ -1,10 +1,10 @@
 ---
 layout: layouts/post.njk
-title: About Me
+title: About
 templateClass: tmpl-post
 eleventyNavigation:
-  key: About Me
+  key: About
   order: 3
 ---
 
-I am a person that writes stuff.
+This is a technical blog about how to write readable code and build working, maintainable systems.

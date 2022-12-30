@@ -18,8 +18,34 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addPlugin(pluginSyntaxHighlight);
   eleventyConfig.addPlugin(pluginNavigation);
 
+  // From https://github.com/danurbanowicz/eleventy-netlify-boilerplate/blob/master/.eleventy.js:
+  // Add support for maintenance-free post authors
+  // Adds an authors collection using the author key in our post frontmatter
+  // Thanks to @pdehaan: https://github.com/pdehaan
+  eleventyConfig.addCollection("authors", collection => {
+    const blogs = collection.getFilteredByGlob("posts/*.md");
+    return blogs.reduce((coll, post) => {
+      const author = post.data.author;
+      if (!author) {
+        return coll;
+      }
+      if (!coll.hasOwnProperty(author)) {
+        coll[author] = [];
+      }
+      coll[author].push(post.data);
+      return coll;
+    }, {});
+  });
+
+
+  // Date formatting (human readable)
   eleventyConfig.addFilter("readableDate", dateObj => {
     return DateTime.fromJSDate(dateObj, {zone: 'utc'}).toFormat("dd LLL yyyy");
+  });
+
+  // Date formatting (machine readable)
+  eleventyConfig.addFilter("machineDate", dateObj => {
+    return DateTime.fromJSDate(dateObj).toFormat("yyyy-MM-dd");
   });
 
   // https://html.spec.whatwg.org/multipage/common-microsyntaxes.html#valid-date-string
