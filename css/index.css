@@ -49,14 +49,10 @@ body {
   max-width: 1100px;
 }
 
-p:last-child {
-  margin-bottom: 0;
-}
-p,
-.tmpl-post li,
 img {
-  max-width: 37.5em; /* 600px /16 */
+  max-width: 90%;
 }
+
 p,
 .tmpl-post li {
   line-height: 1.45;
