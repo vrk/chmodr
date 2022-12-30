@@ -1,39 +1,22 @@
-# eleventy-base-blog
+# chmodr
 
-A starter repository showing how to build a blog with the [Eleventy](https://github.com/11ty/eleventy) static site generator.
+Source code for [https://chmodr.dev/](https://chmodr.dev/).
 
-[![Build Status](https://travis-ci.org/11ty/eleventy-base-blog.svg?branch=master)](https://travis-ci.org/11ty/eleventy-base-blog)
+Created from the [eleventy-base-blog](https://github.com/11ty/eleventy-base-blog) template.
 
-## Demos
-
-- [Netlify](https://eleventy-base-blog.netlify.com/)
-- [GitHub Pages](https://11ty.github.io/eleventy-base-blog/)
-- [Remix on Glitch](https://glitch.com/~11ty-eleventy-base-blog)
-
-## Deploy this to your own site
-
-Deploy this Eleventy site in just a few clicks on these services:
-
-- [Get your own Eleventy web site on Netlify](https://app.netlify.com/start/deploy?repository=https://github.com/11ty/eleventy-base-blog)
-- [Get your own Eleventy web site on Vercel](https://vercel.com/import/project?template=11ty%2Feleventy-base-blog)
-
-Or, read more about [Deploying an Eleventy project](https://www.11ty.dev/docs/deployment/).
-
-## Getting Started
+## Build & run locally
 
 ### 1. Clone this Repository
 
 ```
-git clone https://github.com/11ty/eleventy-base-blog.git my-blog-name
+git clone git@github.com:vrk/chmodr.git
 ```
 
 ### 2. Navigate to the directory
 
 ```
-cd my-blog-name
+cd chmodr
 ```
-
-Specifically have a look at `.eleventy.js` to see if you want to configure any Eleventy options differently.
 
 ### 3. Install dependencies
 
@@ -41,41 +24,20 @@ Specifically have a look at `.eleventy.js` to see if you want to configure any E
 npm install
 ```
 
-### 4. Edit \_data/metadata.json
-
-### 5. Run Eleventy
+### 4. Run Eleventy
 
 ```
-npx @11ty/eleventy
+npm start
 ```
 
-Or build and host locally for local development
+## Add new posts
 
-```
-npx @11ty/eleventy --serve
-```
-
-Or build automatically when a template changes:
-
-```
-npx @11ty/eleventy --watch
-```
-
-Or in debug mode:
-
-```
-DEBUG=* npx @11ty/eleventy
-```
-
-### Implementation Notes
-
-- `about/index.md` shows how to add a content page.
-- `posts/` has the blog posts but really they can live in any directory. They need only the `post` tag to be added to this collection.
+- `posts/` has the blog posts. Add a new file in this directory to create a new post. Follow the existing files as an example of what frontmatter to include.
+- Posts and other content in this repository are typically written in [Markdown](https://www.markdownguide.org/), but they can be any template format (blog posts needn’t be markdown, for example). Configure the supported templates in `.eleventy.js` -> `templateFormats`.
 - Use the `eleventyNavigation` key in your front matter to add a template to the top level site navigation. For example, this is in use on `index.njk` and `about/index.md`.
-- Content can be any template format (blog posts needn’t be markdown, for example). Configure your supported templates in `.eleventy.js` -> `templateFormats`.
 - The `css` and `img` directories in the input directory will be copied to the output folder (via `addPassthroughCopy()` in the `.eleventy.js` file).
-- The blog post feed template is in `feed/feed.njk`. This is also a good example of using a global data files in that it uses `_data/metadata.json`.
-- This example uses three layouts:
+- The blog post feed template is in `feed/feed.njk`.
+- This site uses three layouts:
   - `_includes/layouts/base.njk`: the top level HTML structure
   - `_includes/layouts/home.njk`: the home page template (wrapped into `base.njk`)
   - `_includes/layouts/post.njk`: the blog post template (wrapped into `base.njk`)
